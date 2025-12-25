@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 Feliz Navidad 🎄</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Colores Navideños Tradicionales */
+            --christmas-red: #b22222;
+            --christmas-red-dark: #8b0000;
+            --christmas-red-bright: #dc143c;
+            --christmas-green: #228b22;
+            --christmas-green-dark: #006400;
+            --christmas-green-light: #32cd32;
+            --pine-green: #01796f;
+            --pine-dark: #0d4d44;
+            --gold: #ffd700;
+            --gold-dark: #daa520;
+            --gold-light: #ffec8b;
+            --silver: #c0c0c0;
+            --snow-white: #fffafa;
+            --cream: #fdfaf6;
+            --night-blue: #0c1445;
+            --night-blue-dark: #050a1f;
+            --warm-white: #fff8dc;
+            --wood-brown: #8b4513;
+            --wood-dark: #5d3a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background: var(--night-blue-dark);
+            color: var(--cream);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Copos de Nieve Realistas */
+        .snowfall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .snow {
+            position: absolute;
+            background: radial-gradient(circle, #fff 0%, rgba(255,255,255,0.8) 50%, transparent 100%);
+            border-radius: 50%;
+            filter: blur(0.5px);
+            animation: snowfall linear infinite;
+        }
+
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-10px) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(50vh) translateX(20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(100vh) translateX(-10px) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: 
+                radial-gradient(ellipse at 50% 20%, rgba(34, 139, 34, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at 30% 80%, rgba(178, 34, 34, 0.1) 0%, transparent 30%),
+                radial-gradient(ellipse at 70% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 30%),
+                linear-gradient(to bottom, 
+                    var(--night-blue-dark) 0%, 
+                    #0a1235 30%,
+                    #101d50 60%,
+                    #162055 100%);
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        /* Estrellas del cielo */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            overflow: hidden;
+        }
+
+        .star-point {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Título */
+        .greeting {
+            text-align: center;
+            z-index: 10;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .greeting h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3.5rem, 12vw, 9rem);
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+            text-shadow: none;
+            letter-spacing: 0.02em;
+        }
+
+        .greeting p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 3vw, 1.6rem);
+            color: var(--snow-white);
+            font-weight: 400;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        /* Contenedor del Árbol */
+        .tree-scene {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+            animation: fadeInUp 2s ease-out 0.5s both;
+            margin-top: 1rem;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estrella Superior Realista */
+        .tree-star {
+            position: relative;
+            width: clamp(50px, 10vw, 90px);
+            height: clamp(50px, 10vw, 90px);
+            margin-bottom: -20px;
+            z-index: 100;
+            animation: starGlow 2s ease-in-out infinite;
+        }
+
+        .tree-star svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px var(--gold)) drop-shadow(0 0 40px var(--gold-light));
+        }
+
+        @keyframes starGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 20px var(--gold)) drop-shadow(0 0 40px rgba(255,215,0,0.5));
+                transform: scale(1);
+            }
+            50% { 
+                filter: drop-shadow(0 0 35px var(--gold-light)) drop-shadow(0 0 60px var(--gold));
+                transform: scale(1.08);
+            }
+        }
+
+        /* Árbol de Navidad Realista con Ramas */
+        .christmas-tree {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tree-section {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Capas del árbol con textura de pino */
+        .pine-layer {
+            position: relative;
+            width: 0;
+            height: 0;
+            border-left: solid transparent;
+            border-right: solid transparent;
+            border-bottom-style: solid;
+        }
+
+        .pine-layer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: solid transparent;
+            border-right: solid transparent;
+            border-bottom-style: solid;
+        }
+
+        /* Textura de ramas */
+        .branch-texture {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            clip-path: inherit;
+        }
+
+        .layer-1 {
+            border-left-width: clamp(45px, 11vw, 90px);
+            border-right-width: clamp(45px, 11vw, 90px);
+            border-bottom-width: clamp(55px, 14vw, 110px);
+            border-bottom-color: var(--christmas-green-dark);
+            margin-bottom: -25px;
+            z-index: 6;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));
+        }
+
+        .layer-1::before {
+            border-left-width: clamp(35px, 9vw, 70px);
+            border-right-width: clamp(35px, 9vw, 70px);
+            border-bottom-width: clamp(45px, 11vw, 90px);
+            border-bottom-color: var(--christmas-green);
+            top: clamp(10px, 3vw, 20px);
+        }
+
+        .layer-2 {
+            border-left-width: clamp(65px, 16vw, 130px);
+            border-right-width: clamp(65px, 16vw, 130px);
+            border-bottom-width: clamp(70px, 18vw, 140px);
+            border-bottom-color: var(--christmas-green-dark);
+            margin-bottom: -30px;
+            z-index: 5;
+            filter: drop-shadow(2px 5px 8px rgba(0,0,0,0.4));
+        }
+
+        .layer-2::before {
+            border-left-width: clamp(50px, 13vw, 100px);
+            border-right-width: clamp(50px, 13vw, 100px);
+            border-bottom-width: clamp(55px, 14vw, 110px);
+            border-bottom-color: var(--christmas-green);
+            top: clamp(15px, 4vw, 30px);
+        }
+
+        .layer-3 {
+            border-left-width: clamp(90px, 22vw, 180px);
+            border-right-width: clamp(90px, 22vw, 180px);
+            border-bottom-width: clamp(90px, 22vw, 180px);
+            border-bottom-color: var(--christmas-green-dark);
+            margin-bottom: -35px;
+            z-index: 4;
+            filter: drop-shadow(3px 6px 10px rgba(0,0,0,0.4));
+        }
+
+        .layer-3::before {
+            border-left-width: clamp(70px, 17vw, 140px);
+            border-right-width: clamp(70px, 17vw, 140px);
+            border-bottom-width: clamp(70px, 17vw, 140px);
+            border-bottom-color: var(--christmas-green);
+            top: clamp(20px, 5vw, 40px);
+        }
+
+        .layer-4 {
+            border-left-width: clamp(115px, 28vw, 230px);
+            border-right-width: clamp(115px, 28vw, 230px);
+            border-bottom-width: clamp(110px, 27vw, 220px);
+            border-bottom-color: var(--christmas-green-dark);
+            z-index: 3;
+            filter: drop-shadow(3px 8px 12px rgba(0,0,0,0.5));
+        }
+
+        .layer-4::before {
+            border-left-width: clamp(90px, 22vw, 180px);
+            border-right-width: clamp(90px, 22vw, 180px);
+            border-bottom-width: clamp(85px, 21vw, 170px);
+            border-bottom-color: var(--christmas-green);
+            top: clamp(25px, 6vw, 50px);
+        }
+
+        /* Tronco Realista */
+        .trunk {
+            width: clamp(45px, 10vw, 80px);
+            height: clamp(55px, 12vw, 100px);
+            background: 
+                linear-gradient(90deg, 
+                    var(--wood-dark) 0%, 
+                    var(--wood-brown) 20%, 
+                    #a0522d 40%,
+                    var(--wood-brown) 60%,
+                    var(--wood-dark) 100%);
+            border-radius: 8px 8px 12px 12px;
+            margin-top: -15px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 
+                inset -5px 0 15px rgba(0,0,0,0.4),
+                inset 5px 0 15px rgba(255,255,255,0.1),
+                0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        .trunk::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 20%;
+            width: 15%;
+            height: 25%;
+            background: rgba(0,0,0,0.2);
+            border-radius: 50%;
+        }
+
+        .trunk::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 25%;
+            width: 10%;
+            height: 20%;
+            background: rgba(0,0,0,0.15);
+            border-radius: 50%;
+        }
+
+        /* ============ BOLITAS NAVIDEÑAS REALISTAS ============ */
+        .ornaments-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: clamp(250px, 60vw, 500px);
+            height: clamp(350px, 80vw, 650px);
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .ornament-ball {
+            position: absolute;
+            border-radius: 50%;
+            transform-style: preserve-3d;
+            animation: gentleSway 4s ease-in-out infinite;
+        }
+
+        /* Gancho de la bolita */
+        .ornament-ball::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 10px;
+            background: linear-gradient(to bottom, var(--gold), var(--gold-dark));
+            border-radius: 2px 2px 0 0;
+            box-shadow: 0 0 3px rgba(0,0,0,0.3);
+        }
+
+        /* Anillo superior */
+        .ornament-ball::after {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 8px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            background: transparent;
+        }
+
+        @keyframes gentleSway {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+
+        /* Tamaños de bolitas */
+        .ball-lg {
+            width: clamp(28px, 5vw, 45px);
+            height: clamp(28px, 5vw, 45px);
+        }
+
+        .ball-md {
+            width: clamp(22px, 4vw, 36px);
+            height: clamp(22px, 4vw, 36px);
+        }
+
+        .ball-sm {
+            width: clamp(16px, 3vw, 28px);
+            height: clamp(16px, 3vw, 28px);
+        }
+
+        /* Bolita Roja Brillante */
+        .ball-red {
+            background: 
+                radial-gradient(circle at 30% 30%, 
+                    rgba(255,255,255,0.9) 0%,
+                    rgba(255,255,255,0.4) 5%,
+                    var(--christmas-red-bright) 15%,
+                    var(--christmas-red) 40%,
+                    var(--christmas-red-dark) 70%,
+                    #4a0000 100%);
+            box-shadow: 
+                inset 0 -10px 20px rgba(0,0,0,0.4),
+                inset 0 10px 20px rgba(255,255,255,0.2),
+                0 5px 15px rgba(0,0,0,0.4),
+                0 0 20px rgba(178,34,34,0.3);
+        }
+
+        /* Bolita Dorada */
+        .ball-gold {
+            background: 
+                radial-gradient(circle at 30% 30%, 
+                    #fff 0%,
+                    rgba(255,255,255,0.6) 5%,
+                    var(--gold-light) 15%,
+                    var(--gold) 40%,
+                    var(--gold-dark) 70%,
+                    #8b6914 100%);
+            box-shadow: 
+                inset 0 -10px 20px rgba(0,0,0,0.3),
+                inset 0 10px 20px rgba(255,255,255,0.4),
+                0 5px 15px rgba(0,0,0,0.4),
+                0 0 25px rgba(255,215,0,0.4);
+        }
+
+        /* Bolita Plateada */
+        .ball-silver {
+            background: 
+                radial-gradient(circle at 30% 30%, 
+                    #fff 0%,
+                    rgba(255,255,255,0.8) 5%,
+                    #e8e8e8 15%,
+                    var(--silver) 40%,
+                    #a0a0a0 70%,
+                    #606060 100%);
+            box-shadow: 
+                inset 0 -10px 20px rgba(0,0,0,0.3),
+                inset 0 10px 20px rgba(255,255,255,0.5),
+                0 5px 15px rgba(0,0,0,0.4),
+                0 0 20px rgba(192,192,192,0.3);
+        }
+
+        /* Bolita Verde */
+        .ball-green {
+            background: 
+                radial-gradient(circle at 30% 30%, 
+                    rgba(255,255,255,0.9) 0%,
+                    rgba(255,255,255,0.4) 5%,
+                    var(--christmas-green-light) 15%,
+                    var(--christmas-green) 40%,
+                    var(--christmas-green-dark) 70%,
+                    #003300 100%);
+            box-shadow: 
+                inset 0 -10px 20px rgba(0,0,0,0.4),
+                inset 0 10px 20px rgba(255,255,255,0.2),
+                0 5px 15px rgba(0,0,0,0.4),
+                0 0 20px rgba(34,139,34,0.3);
+        }
+
+        /* Bolita Blanca/Perla */
+        .ball-white {
+            background: 
+                radial-gradient(circle at 30% 30%, 
+                    #fff 0%,
+                    #fff 10%,
+                    #f5f5f5 20%,
+                    #e8e8e8 50%,
+                    #d0d0d0 80%,
+                    #b0b0b0 100%);
+            box-shadow: 
+                inset 0 -10px 20px rgba(0,0,0,0.15),
+                inset 0 10px 20px rgba(255,255,255,0.8),
+                0 5px 15px rgba(0,0,0,0.3),
+                0 0 15px rgba(255,255,255,0.5);
+        }
+
+        /* Bolita Roja Mate con diseño */
+        .ball-red-matte {
+            background: 
+                radial-gradient(circle at 35% 35%, 
+                    rgba(255,200,200,0.6) 0%,
+                    var(--christmas-red) 30%,
+                    var(--christmas-red-dark) 100%);
+            box-shadow: 
+                inset 0 -8px 15px rgba(0,0,0,0.5),
+                0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        /* Decoración de líneas en bolitas */
+        .ball-striped::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            transform: translateY(-50%);
+        }
+
+        /* Luces del Árbol */
+        .tree-lights {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: clamp(250px, 60vw, 500px);
+            height: clamp(350px, 80vw, 650px);
+            pointer-events: none;
+            z-index: 45;
+        }
+
+        .tree-light {
+            position: absolute;
+            width: clamp(6px, 1.2vw, 10px);
+            height: clamp(8px, 1.5vw, 14px);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: lightGlow 1s ease-in-out infinite;
+        }
+
+        .tree-light::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: #2d5016;
+            border-radius: 1px;
+        }
+
+        @keyframes lightGlow {
+            0%, 100% { 
+                filter: brightness(1);
+                box-shadow: 0 0 8px currentColor, 0 0 15px currentColor;
+            }
+            50% { 
+                filter: brightness(1.4);
+                box-shadow: 0 0 15px currentColor, 0 0 30px currentColor, 0 0 45px currentColor;
+            }
+        }
+
+        .light-warm { 
+            background: radial-gradient(circle at 50% 30%, #fff, #ffdd44, #ff9900);
+            color: #ffaa00;
+        }
+        .light-red { 
+            background: radial-gradient(circle at 50% 30%, #ffcccc, #ff4444, #cc0000);
+            color: #ff3333;
+        }
+        .light-blue { 
+            background: radial-gradient(circle at 50% 30%, #ccffff, #44aaff, #0066cc);
+            color: #4499ff;
+        }
+        .light-green { 
+            background: radial-gradient(circle at 50% 30%, #ccffcc, #44ff44, #009900);
+            color: #44dd44;
+        }
+        .light-white { 
+            background: radial-gradient(circle at 50% 30%, #fff, #f0f0f0, #ddd);
+            color: #ffffff;
+        }
+
+        /* Guirnalda/Espumillón */
+        .tinsel {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: clamp(250px, 60vw, 500px);
+            height: clamp(350px, 80vw, 650px);
+            pointer-events: none;
+            z-index: 40;
+            overflow: visible;
+        }
+
+        .tinsel-strand {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255,215,0,0.8), 
+                rgba(255,236,139,1), 
+                rgba(255,215,0,0.8), 
+                transparent);
+            border-radius: 2px;
+            animation: shimmer 2s ease-in-out infinite;
+            box-shadow: 0 0 5px rgba(255,215,0,0.5);
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Nieve en el suelo */
+        .snow-ground {
+            width: clamp(320px, 75vw, 650px);
+            height: clamp(30px, 6vw, 60px);
+            background: 
+                radial-gradient(ellipse at 50% 0%, 
+                    var(--snow-white) 0%, 
+                    rgba(240,248,255,0.9) 40%,
+                    rgba(220,235,245,0.6) 70%,
+                    transparent 100%);
+            border-radius: 50%;
+            margin-top: -20px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 
+                0 0 60px rgba(255,255,255,0.4),
+                0 0 100px rgba(255,255,255,0.2);
+        }
+
+        /* Regalos Navideños */
+        .gifts {
+            display: flex;
+            justify-content: center;
+            gap: clamp(12px, 4vw, 35px);
+            margin-top: -25px;
+            z-index: 10;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+
+        .gift {
+            position: relative;
+            animation: giftFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes giftFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .gift-box {
+            width: clamp(40px, 10vw, 70px);
+            height: clamp(35px, 9vw, 60px);
+            border-radius: 6px;
+            position: relative;
+            box-shadow: 
+                inset -5px -5px 15px rgba(0,0,0,0.3),
+                inset 3px 3px 10px rgba(255,255,255,0.1),
+                0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Cinta vertical */
+        .gift-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18%;
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        /* Cinta horizontal */
+        .gift-box::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 18%;
+            border-radius: 3px;
+        }
+
+        .gift-bow {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: clamp(25px, 6vw, 45px);
+            height: clamp(18px, 4vw, 30px);
+            z-index: 5;
+        }
+
+        .bow-loop {
+            position: absolute;
+            width: 45%;
+            height: 100%;
+            border-radius: 50%;
+            top: 0;
+        }
+
+        .bow-loop-left {
+            left: 0;
+            border-radius: 50% 20% 20% 50%;
+        }
+
+        .bow-loop-right {
+            right: 0;
+            border-radius: 20% 50% 50% 20%;
+        }
+
+        .bow-center {
+            position: absolute;
+            width: 30%;
+            height: 60%;
+            left: 35%;
+            top: 20%;
+            border-radius: 30%;
+        }
+
+        /* Regalo 1 - Rojo con lazo dorado */
+        .gift-1 .gift-box {
+            background: linear-gradient(145deg, var(--christmas-red-bright), var(--christmas-red), var(--christmas-red-dark));
+        }
+        .gift-1 .gift-box::before,
+        .gift-1 .gift-box::after {
+            background: linear-gradient(to right, var(--gold-dark), var(--gold), var(--gold-dark));
+        }
+        .gift-1 .bow-loop,
+        .gift-1 .bow-center {
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold), var(--gold-dark));
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .gift-1 { animation-delay: 0s; }
+
+        /* Regalo 2 - Dorado con lazo rojo */
+        .gift-2 .gift-box {
+            background: linear-gradient(145deg, var(--gold-light), var(--gold), var(--gold-dark));
+        }
+        .gift-2 .gift-box::before,
+        .gift-2 .gift-box::after {
+            background: linear-gradient(to right, var(--christmas-red-dark), var(--christmas-red), var(--christmas-red-dark));
+        }
+        .gift-2 .bow-loop,
+        .gift-2 .bow-center {
+            background: linear-gradient(to bottom, var(--christmas-red-bright), var(--christmas-red), var(--christmas-red-dark));
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .gift-2 { animation-delay: 0.4s; }
+
+        /* Regalo 3 - Verde con lazo dorado */
+        .gift-3 .gift-box {
+            background: linear-gradient(145deg, var(--christmas-green-light), var(--christmas-green), var(--christmas-green-dark));
+        }
+        .gift-3 .gift-box::before,
+        .gift-3 .gift-box::after {
+            background: linear-gradient(to right, var(--gold-dark), var(--gold-light), var(--gold-dark));
+        }
+        .gift-3 .bow-loop,
+        .gift-3 .bow-center {
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold), var(--gold-dark));
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .gift-3 { animation-delay: 0.8s; }
+
+        /* Regalo 4 - Plateado con lazo rojo */
+        .gift-4 .gift-box {
+            background: linear-gradient(145deg, #e8e8e8, var(--silver), #909090);
+        }
+        .gift-4 .gift-box::before,
+        .gift-4 .gift-box::after {
+            background: linear-gradient(to right, var(--christmas-red-dark), var(--christmas-red-bright), var(--christmas-red-dark));
+        }
+        .gift-4 .bow-loop,
+        .gift-4 .bow-center {
+            background: linear-gradient(to bottom, var(--christmas-red-bright), var(--christmas-red));
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .gift-4 { animation-delay: 1.2s; }
+
+        /* Indicador de scroll */
+        .scroll-hint {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: bounce 2s ease-in-out infinite;
+            z-index: 100;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        .scroll-hint span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        .scroll-hint .chevron {
+            width: 25px;
+            height: 25px;
+            border-right: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            transform: rotate(45deg);
+            opacity: 0.7;
+        }
+
+        /* Sección de Mensaje */
+        .message-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            background: 
+                radial-gradient(ellipse at 50% 30%, rgba(178,34,34,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 70%, rgba(34,139,34,0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 70%, rgba(255,215,0,0.06) 0%, transparent 40%),
+                linear-gradient(to bottom, #162055 0%, var(--night-blue) 50%, var(--night-blue-dark) 100%);
+            position: relative;
+        }
+
+        .message-card {
+            background: 
+                linear-gradient(135deg, 
+                    rgba(255,255,255,0.08) 0%, 
+                    rgba(255,255,255,0.03) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,215,0,0.25);
+            border-radius: 24px;
+            padding: clamp(2.5rem, 6vw, 5rem);
+            max-width: 850px;
+            text-align: center;
+            box-shadow: 
+                0 25px 80px rgba(0,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                0 0 60px rgba(255,215,0,0.05);
+            animation: cardGlow 6s ease-in-out infinite;
+        }
+
+        @keyframes cardGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 25px 80px rgba(0,0,0,0.4),
+                    inset 0 1px 0 rgba(255,255,255,0.1),
+                    0 0 60px rgba(255,215,0,0.05);
+            }
+            50% { 
+                box-shadow: 
+                    0 30px 90px rgba(0,0,0,0.45),
+                    inset 0 1px 0 rgba(255,255,255,0.15),
+                    0 0 80px rgba(255,215,0,0.1);
+            }
+        }
+
+        .message-card h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+        }
+
+        .message-card p {
+            font-family: 'Lora', serif;
+            font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+            line-height: 2;
+            color: var(--cream);
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+        }
+
+        .message-card .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 2.5rem;
+        }
+
+        /* Decoración Holly */
+        .holly-decoration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 2rem 0;
+        }
+
+        .holly-leaf {
+            width: 22px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--christmas-green-light), var(--christmas-green), var(--christmas-green-dark));
+            border-radius: 0 100% 0 100%;
+            box-shadow: inset -2px -2px 5px rgba(0,0,0,0.3);
+        }
+
+        .holly-leaf:first-child {
+            transform: rotate(-35deg);
+        }
+
+        .holly-leaf:last-child {
+            transform: rotate(35deg) scaleX(-1);
+        }
+
+        .holly-berries {
+            display: flex;
+            gap: 3px;
+            position: relative;
+            top: 5px;
+        }
+
+        .holly-berry {
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle at 30% 30%, #ff6666, var(--christmas-red), var(--christmas-red-dark));
+            border-radius: 50%;
+            box-shadow: 
+                inset -2px -2px 4px rgba(0,0,0,0.4),
+                0 2px 5px rgba(0,0,0,0.3),
+                0 0 10px rgba(178,34,34,0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background: var(--night-blue-dark);
+            border-top: 1px solid rgba(255,215,0,0.15);
+        }
+
+        footer p {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold);
+            font-size: 1rem;
+            letter-spacing: 0.3em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 1.5rem;
+            }
+
+            .gifts {
+                gap: 10px;
+            }
+
+            .message-card {
+                margin: 1rem;
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .greeting h1 {
+                line-height: 1.1;
+            }
+
+            .scroll-hint {
+                bottom: 15px;
+            }
+
+            .scroll-hint span {
+                font-size: 0.75rem;
+            }
+
+            .scroll-hint .chevron {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nieve -->
+    <div class="snowfall" id="snowfall"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <!-- Estrellas del cielo -->
+        <div class="stars" id="stars"></div>
+
+        <div class="greeting">
+            <h1>Feliz Navidad</h1>
+            <p>Y un próspero año nuevo</p>
+        </div>
+
+        <div class="tree-scene">
+            <!-- Estrella -->
+            <div class="tree-star">
+                <svg viewBox="0 0 100 100">
+                    <defs>
+                        <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fff9e6"/>
+                            <stop offset="50%" style="stop-color:#ffd700"/>
+                            <stop offset="100%" style="stop-color:#daa520"/>
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <polygon 
+                        points="50,5 61,35 95,35 68,57 79,91 50,70 21,91 32,57 5,35 39,35" 
+                        fill="url(#starGrad)" 
+                        filter="url(#glow)"
+                        stroke="#daa520"
+                        stroke-width="1"/>
+                </svg>
+            </div>
+
+            <!-- Árbol -->
+            <div class="christmas-tree">
+                <div class="pine-layer layer-1"></div>
+                <div class="pine-layer layer-2"></div>
+                <div class="pine-layer layer-3"></div>
+                <div class="pine-layer layer-4"></div>
+
+                <!-- Bolitas Navideñas -->
+                <div class="ornaments-container" id="ornaments"></div>
+
+                <!-- Luces -->
+                <div class="tree-lights" id="lights"></div>
+
+                <!-- Espumillón -->
+                <div class="tinsel" id="tinsel"></div>
+            </div>
+
+            <div class="trunk"></div>
+        </div>
+
+        <div class="snow-ground"></div>
+
+        <!-- Regalos -->
+        <div class="gifts">
+            <div class="gift gift-1">
+                <div class="gift-bow">
+                    <div class="bow-loop bow-loop-left"></div>
+                    <div class="bow-loop bow-loop-right"></div>
+                    <div class="bow-center"></div>
+                </div>
+                <div class="gift-box"></div>
+            </div>
+            <div class="gift gift-2">
+                <div class="gift-bow">
+                    <div class="bow-loop bow-loop-left"></div>
+                    <div class="bow-loop bow-loop-right"></div>
+                    <div class="bow-center"></div>
+                </div>
+                <div class="gift-box"></div>
+            </div>
+            <div class="gift gift-3">
+                <div class="gift-bow">
+                    <div class="bow-loop bow-loop-left"></div>
+                    <div class="bow-loop bow-loop-right"></div>
+                    <div class="bow-center"></div>
+                </div>
+                <div class="gift-box"></div>
+            </div>
+            <div class="gift gift-4">
+                <div class="gift-bow">
+                    <div class="bow-loop bow-loop-left"></div>
+                    <div class="bow-loop bow-loop-right"></div>
+                    <div class="bow-center"></div>
+                </div>
+                <div class="gift-box"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mensaje -->
+
+    <script>
+        // Crear copos de nieve realistas
+        function createSnow() {
+            const container = document.getElementById('snowfall');
+            const count = window.innerWidth < 768 ? 60 : 100;
+
+            for (let i = 0; i < count; i++) {
+                const snow = document.createElement('div');
+                snow.className = 'snow';
+                const size = Math.random() * 4 + 2;
+                snow.style.width = size + 'px';
+                snow.style.height = size + 'px';
+                snow.style.left = Math.random() * 100 + '%';
+                snow.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                snow.style.animationDelay = (Math.random() * 8) + 's';
+                snow.style.opacity = Math.random() * 0.6 + 0.4;
+                container.appendChild(snow);
+            }
+        }
+
+        // Crear estrellas del cielo
+        function createStars() {
+            const container = document.getElementById('stars');
+            const count = window.innerWidth < 768 ? 50 : 100;
+
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.className = 'star-point';
+                const size = Math.random() * 2 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = (Math.random() * 3) + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(star);
+            }
+        }
+
+        // Crear bolitas navideñas
+        function createOrnaments() {
+            const container = document.getElementById('ornaments');
+            const ballTypes = [
+                { class: 'ball-red', size: 'ball-lg' },
+                { class: 'ball-gold', size: 'ball-lg' },
+                { class: 'ball-silver', size: 'ball-md' },
+                { class: 'ball-green', size: 'ball-md' },
+                { class: 'ball-white', size: 'ball-sm' },
+                { class: 'ball-red', size: 'ball-md' },
+                { class: 'ball-gold', size: 'ball-sm' },
+                { class: 'ball-red-matte', size: 'ball-lg' }
+            ];
+
+            const positions = [
+                // Capa 1 (arriba)
+                { top: '8%', left: '47%' },
+                { top: '12%', left: '53%' },
+                // Capa 2
+                { top: '18%', left: '38%' },
+                { top: '20%', left: '50%' },
+                { top: '18%', left: '62%' },
+                { top: '24%', left: '44%' },
+                { top: '24%', left: '56%' },
+                // Capa 3
+                { top: '32%', left: '30%' },
+                { top: '35%', left: '42%' },
+                { top: '33%', left: '55%' },
+                { top: '32%', left: '68%' },
+                { top: '40%', left: '35%' },
+                { top: '42%', left: '50%' },
+                { top: '40%', left: '65%' },
+                // Capa 4 (abajo)
+                { top: '52%', left: '22%' },
+                { top: '55%', left: '38%' },
+                { top: '53%', left: '52%' },
+                { top: '55%', left: '66%' },
+                { top: '52%', left: '78%' },
+                { top: '62%', left: '28%' },
+                { top: '65%', left: '45%' },
+                { top: '63%', left: '58%' },
+                { top: '62%', left: '72%' },
+                { top: '72%', left: '20%' },
+                { top: '75%', left: '35%' },
+                { top: '73%', left: '50%' },
+                { top: '75%', left: '65%' },
+                { top: '72%', left: '80%' },
+                { top: '82%', left: '30%' },
+                { top: '84%', left: '50%' },
+                { top: '82%', left: '70%' }
+            ];
+
+            positions.forEach((pos, i) => {
+                const ball = document.createElement('div');
+                const type = ballTypes[i % ballTypes.length];
+                ball.className = `ornament-ball ${type.class} ${type.size}`;
+                ball.style.top = pos.top;
+                ball.style.left = pos.left;
+                ball.style.animationDelay = (Math.random() * 2) + 's';
+                container.appendChild(ball);
+            });
+        }
+
+        // Crear luces del árbol
+        function createLights() {
+            const container = document.getElementById('lights');
+            const colors = ['light-warm', 'light-red', 'light-blue', 'light-green', 'light-white'];
+
+            const positions = [
+                { top: '6%', left: '49%' },
+                { top: '10%', left: '45%' },
+                { top: '10%', left: '55%' },
+                { top: '15%', left: '40%' },
+                { top: '17%', left: '52%' },
+                { top: '15%', left: '60%' },
+                { top: '22%', left: '35%' },
+                { top: '25%', left: '48%' },
+                { top: '23%', left: '62%' },
+                { top: '30%', left: '28%' },
+                { top: '33%', left: '40%' },
+                { top: '31%', left: '55%' },
+                { top: '30%', left: '70%' },
+                { top: '40%', left: '22%' },
+                { top: '43%', left: '38%' },
+                { top: '41%', left: '52%' },
+                { top: '43%', left: '66%' },
+                { top: '40%', left: '78%' },
+                { top: '52%', left: '18%' },
+                { top: '55%', left: '32%' },
+                { top: '53%', left: '48%' },
+                { top: '55%', left: '62%' },
+                { top: '52%', left: '82%' },
+                { top: '65%', left: '15%' },
+                { top: '68%', left: '30%' },
+                { top: '66%', left: '45%' },
+                { top: '68%', left: '58%' },
+                { top: '65%', left: '72%' },
+                { top: '68%', left: '85%' },
+                { top: '78%', left: '20%' },
+                { top: '80%', left: '38%' },
+                { top: '78%', left: '55%' },
+                { top: '80%', left: '70%' },
+                { top: '78%', left: '85%' }
+            ];
+
+            positions.forEach((pos, i) => {
+                const light = document.createElement('div');
+                light.className = `tree-light ${colors[i % colors.length]}`;
+                light.style.top = pos.top;
+                light.style.left = pos.left;
+                light.style.animationDelay = (Math.random() * 1.5) + 's';
+                container.appendChild(light);
+            });
+        }
+
+        // Crear espumillón/guirnalda
+        function createTinsel() {
+            const container = document.getElementById('tinsel');
+
+            const strands = [
+                { top: '15%', left: '35%', width: '30%', rotate: '15deg' },
+                { top: '28%', left: '25%', width: '50%', rotate: '-10deg' },
+                { top: '42%', left: '18%', width: '64%', rotate: '8deg' },
+                { top: '58%', left: '12%', width: '76%', rotate: '-5deg' },
+                { top: '75%', left: '8%', width: '84%', rotate: '12deg' }
+            ];
+
+            strands.forEach((strand, i) => {
+                const tinsel = document.createElement('div');
+                tinsel.className = 'tinsel-strand';
+                tinsel.style.top = strand.top;
+                tinsel.style.left = strand.left;
+                tinsel.style.width = strand.width;
+                tinsel.style.transform = `rotate(${strand.rotate})`;
+                tinsel.style.animationDelay = (i * 0.5) + 's';
+                container.appendChild(tinsel);
+            });
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            createSnow();
+            createStars();
+            createOrnaments();
+            createLights();
+            createTinsel();
+
+            // Animación de entrada suave
+            document.body.style.opacity = '0';
+            requestAnimationFrame(() => {
+                document.body.style.transition = 'opacity 1.2s ease-out';
+                document.body.style.opacity = '1';
+            });
+        });
+
+        // Recrear elementos en resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                document.getElementById('snowfall').innerHTML = '';
+                document.getElementById('stars').innerHTML = '';
+                createSnow();
+                createStars();
+            }, 300);
+        });
+    </script>
+</body>
+</html>
